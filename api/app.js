@@ -56,19 +56,19 @@ app.post('/home', async (req, res) => {
     if(homeExiste) {
         return res.status(400).json({ 
             error: true,
-            message: `Este registro já existe na collection homes.`
+            message: `Este registro já existe!`
         })
     }
 
     await home.create(req.body, (err) => {
         if(err) return res.status(400).json({ 
             error: true,
-            message: `Conteúdo da página home não cadastrado com sucesso: ${err}`
+            message: `Erro ao efetuar o cadastro: ${err}`
         })
 
         return res.json({
             error: false,
-            message: `Conteúdo da página home cadastrado com sucesso.`
+            message: `Cadastro efetuado com sucesso!`
         })
     })
 })
@@ -77,13 +77,13 @@ app.post('/contato', async (req, res) => {
     await contato.create(req.body, (err) => {
         if(err) return res.status(400).json({
             error: true,
-            message: `Conteúdo da página contato não cadastrado com sucesso: ${err}`
+            message: `Erro ao efetuar o cadastro: ${err}`
         })
     })
 
     return res.json({
         error: false,
-        message: `Conteúdo da página contato cadastrado com sucesso.`
+        message: `Cadastro efetuado com sucesso!`
     })
 })
 
